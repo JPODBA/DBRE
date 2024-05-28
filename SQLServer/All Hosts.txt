@@ -1,0 +1,101 @@
+# Copyright (c) 1993-2009 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, comments (such as these) may be inserted on individual
+# lines or following the machine name denoted by a '#' symbol.
+#
+# For example:
+#
+#      102.54.94.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0.1       localhost
+#	::1             localhost
+
+
+#Brinks BRADESCO DESV
+10.67.251.121 BRZGRUDBDV25
+
+#Brink Bradesco HMLG Leitura apenas
+10.67.5.81 Brzgrudbhom25
+
+# DESV
+10.21.100.36\BDPRODEWALLET
+10.21.100.36\BDPROD09
+10.21.100.36\BDPROD05
+10.21.100.36\BDPROD
+10.21.100.36\CONTADIGITAL
+
+# GUITA PROD
+10.40.20.4 BDPRODGUITA
+10.40.20.5 BDPRODGUITA
+
+# GUTIA HMLG
+10.60.5.4\AZ-AO-DEV-BD01
+10.60.5.4\BDHMLGQA
+
+# Corban HOSTS
+10.80.5.4\CORBANBDHMLG
+10.80.5.4\CORBAN_BNI
+192.168.172.21\CORBAN
+
+# MJS
+10.0.20.4\BDPROD05
+10.0.20.4\BDPROD0
+10.0.20.4\BDPROD09
+
+#############################################################
+# Ploomes
+
+172.19.0.4    ModuloAnalitics.172.19.0.4
+172.24.0.5    ModuloAnalitics_EU.172.24.0.5
+172.16.0.7	  Central.172.16.0.7
+172.16.0.30	  Shard01.172.16.0.30
+172.16.0.23   Shard02.172.16.0.23
+172.20.0.4    Shard03.172.20.0.4
+172.16.0.45	  Shard04.172.16.0.45
+172.16.0.34	  Shard05.172.16.0.34
+172.16.0.8 	  Shard06.172.16.0.8
+172.16.0.65	  Shard07.172.16.0.65
+172.16.0.72	  Shard08.172.16.0.72
+172.16.0.88	  Shard09.172.16.0.88
+172.16.0.95	  Shard10.172.16.0.95
+172.24.0.4	  Shard11.172.24.0.4
+172.16.0.19	  Shard12.172.16.0.19
+172.18.0.8    Desv.172.18.0.8
+172.16.0.71   SQL-PRD-04.172.16.0.71
+172.20.0.13   SQL-US-IDP.172.20.0.13
+##172.24.0.14   SQL-PRD-US.172.24.0.14
+172.16.0.44   Sankhya_Int.172.16.0.44
+172.16.0.37   ModuloInt03.172.16.0.37
+172.16.0.55   PRD_LOGS.172.16.0.55
+
+
+## HMLG
+172.22.2.5   SQL-CENTRAL-HMLG.172.22.2.5
+172.22.2.6   SQL-CRM-HMLG.172.22.2.6
+172.22.2.7   SQL-REPORT-HMLG.172.22.2.7
+172.22.2.8   SQL-IDP-HMLG.172.22.2.8
+172.22.2.9   SQL-SANKHYA-HMLG.172.22.2.9
+
+
+
+
+
+
+
+
+
+
+
+
+
+
