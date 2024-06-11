@@ -17,12 +17,13 @@ WHERE blocking_these is not null or r.blocking_session_id > 0
 ORDER BY len(bl.blocking_these) desc, r.blocking_session_id desc, r.session_id;
 
 
---sp_who2
 --SP_WHOISACTIVE
---kill 125
+
+-- Validando após alteração de Banco de dados
 --SELECT COUNT(1) 
 --FROM Ploomes_CRM_Logs..AutomationAttempt (Nolock)
 
+-- Valida auditoria de login
 --SELECT 
 --    event_time,
 --    action_id, 
@@ -33,37 +34,17 @@ ORDER BY len(bl.blocking_these) desc, r.blocking_session_id desc, r.session_id;
 --FROM fn_get_audit_file( 'C:\SQL_LOG_SECURITY*.sqlaudit' , DEFAULT , DEFAULT)
 --order by 1 desc;
 
+-- Modos de limpar o cache (Nem sempre é efetivo, mas pode ajudar)
 --DBCC FREESYSTEMCACHE ('ALL') 
 --DBCC FREESESSIONCACHE
 --DBCC FREEPROCCACHE
 
-
+-- Valida as sessões logadas
 --SELECT s.session_id, s.login_time, s.host_name, s.program_name,
 --s.login_name, s.nt_user_name, s.is_user_process
 --FROM sys.dm_exec_sessions s
 --WHERE s.is_user_process = 1
 --	and login_name in ('ploomes_services')
-
---select 
---	SQL_current_Memory_usage_mb as Memoria_emUso, 
---	OS_Total_Memory_mb as TotalDispon�vel, 
---	OS_Available_Memory_mb as Mb_livre 
---From master.dbo.fn_CheckSQLMemory()
-
---use Ploomes_CRM
---go 
---select * from hostset
-
---SELECT
---		top 50
---    end_time,
---    avg_cpu_percent,
---    avg_instance_cpu_percent
---FROM sys.dm_db_resource_stats
-----where avg_cpu_percent <= 70
---ORDER BY end_time DESC; 
---GO
-
 
 --select
 --  getdate() as data,

@@ -1,0 +1,125 @@
+use Ploomes_CRM
+go 
+
+DROP INDEX IF EXISTS [IX_Campo_Valor_Cliente_ID_Cliente2] ON [dbo].[Campo_Valor_Cliente];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Cliente_ID_Cliente3] ON [dbo].[Campo_Valor_Cliente];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Quote_Product_QuoteProductId] ON [dbo].[Campo_Valor_Quote_Product];  
+go 
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Cliente_ID_Cliente2] ON [dbo].[Campo_Valor_Cliente] ([ID_Cliente] ASC)  INCLUDE (AttachmentValueId, ContactValueId, CurrencyValueId, ID, ID_Campo, ID_OpcaoValor, ID_ProdutoValor, ID_UsuarioValor, ValorBooleano, ValorDataHora, ValorDecimal, ValorInteiro, ValorTexto, ValorTextoMultilinha) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_03];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Cliente_ID_Cliente3] ON [dbo].[Campo_Valor_Cliente] ([ID_Cliente] ASC)  INCLUDE (AttachmentItemValueId, AttachmentValueId, ContactValueId, CurrencyValueId, ID, ID_Campo, ID_OpcaoValor, ID_ProdutoValor, ID_UsuarioValor, ValorBooleano, ValorDataHora, ValorDecimal, ValorInteiro, ValorTexto, ValorTextoMultilinha) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_03];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Quote_Product_QuoteProductId] ON [dbo].[Campo_Valor_Quote_Product] ([Quote_ProductId] ASC)  INCLUDE (AttachmentItemValueId, AttachmentValueId, BigStringValue, BoolValue, ContactValueId, CurrencyValueId, DateTimeValue, DecimalValue, FieldId, Id, IntegerValue, ObjectValueId, ProductValueId, StringValue, UserValueId) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_03];  
+
+go 
+
+DROP INDEX IF EXISTS [IX_Anexo_ID_Tarefa2] ON [dbo].[Anexo];  
+DROP INDEX IF EXISTS [Anexo_IDM] ON [dbo].[Anexo];  
+DROP INDEX IF EXISTS [IX_Automation_Log_Id_DealId] ON [dbo].[Automation_Log];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_ID_CotacaoRevisaoTabela] ON [dbo].[Campo_Valor];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_ID_CotacaoRevisaoTabelaProdutoParte] ON [dbo].[Campo_Valor];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_ID_Oportunidade] ON [dbo].[Campo_Valor];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Cliente_ID_Campo_DataHora] ON [dbo].[Campo_Valor_Cliente];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Cliente_ID_Campo_Decimal] ON [dbo].[Campo_Valor_Cliente];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Cliente_ID_Campo_Inteiro] ON [dbo].[Campo_Valor_Cliente];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Cliente_ID_Campo_Texto] ON [dbo].[Campo_Valor_Cliente];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Cliente_ID_Cliente] ON [dbo].[Campo_Valor_Cliente];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Cotacao_ID_Campo_DataHora] ON [dbo].[Campo_Valor_Cotacao];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Cotacao_ID_Cotacao] ON [dbo].[Campo_Valor_Cotacao];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Cotacao_ID_Cotacao2] ON [dbo].[Campo_Valor_Cotacao];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Cotacao_ValorTexto] ON [dbo].[Campo_Valor_Cotacao];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Cotacao_IDM01] ON [dbo].[Campo_Valor_Cotacao];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Oportunidade_ID_Campo_Booleano] ON [dbo].[Campo_Valor_Oportunidade];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Oportunidade_ID_Campo_DataHora] ON [dbo].[Campo_Valor_Oportunidade];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Oportunidade_ID_Campo_Inteiro] ON [dbo].[Campo_Valor_Oportunidade];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Oportunidade_ID_Campo_Texto] ON [dbo].[Campo_Valor_Oportunidade];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Oportunidade_ID_Oportunidade] ON [dbo].[Campo_Valor_Oportunidade];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Oportunidade_ID_Oportunidade2] ON [dbo].[Campo_Valor_Oportunidade];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Order_DateTimeValue] ON [dbo].[Campo_Valor_Order];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Order_FieldId] ON [dbo].[Campo_Valor_Order];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Order_IntegerValue] ON [dbo].[Campo_Valor_Order];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Order_OrderId] ON [dbo].[Campo_Valor_Order];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Order_OrderId2] ON [dbo].[Campo_Valor_Order];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Order_StringValue2] ON [dbo].[Campo_Valor_Order];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Order_Product_Order_ProductId] ON [dbo].[Campo_Valor_Order_Product];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Order_Product_Order_ProductId2] ON [dbo].[Campo_Valor_Order_Product];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Order_Product_StringValue2] ON [dbo].[Campo_Valor_Order_Product];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Produto_ID_Campo_Inteiro] ON [dbo].[Campo_Valor_Produto];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Produto_ID_Produto2] ON [dbo].[Campo_Valor_Produto];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Produto_ValorTexto] ON [dbo].[Campo_Valor_Produto];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Produto_ID_Produto3] ON [dbo].[Campo_Valor_Produto];  
+DROP INDEX IF EXISTS [IX_Campo_Valor_Quote_Product_Quote_ProductId] ON [dbo].[Campo_Valor_Quote_Product];  
+DROP INDEX IF EXISTS [IX_Cliente_ID_ClientePloomes4] ON [dbo].[Cliente];  
+DROP INDEX IF EXISTS [IX_Cliente_ID_ClientePloomes5] ON [dbo].[Cliente];  
+DROP INDEX IF EXISTS [IX_Cliente_Suspenso] ON [dbo].[Cliente];  
+DROP INDEX IF EXISTS [IX_Cliente_Suspenso2] ON [dbo].[Cliente];  
+DROP INDEX IF EXISTS [IX_Log_Acao] ON [dbo].[Log_Acao];  
+DROP INDEX IF EXISTS [IX_Log_Acao_AccountId] ON [dbo].[Log_Acao];  
+DROP INDEX IF EXISTS [IX_ID_Funil_ID_Status_2] ON [dbo].[Oportunidade];  
+DROP INDEX IF EXISTS [Timeline_DBA02] ON [dbo].[Timeline];  
+DROP INDEX IF EXISTS [IX_Timeline_ID_Cliente] ON [dbo].[Timeline];  
+DROP INDEX IF EXISTS [IX_Timeline_ID_ClientePloomes] ON [dbo].[Timeline];  
+DROP INDEX IF EXISTS [IX_Timeline_ID_Oportunidade] ON [dbo].[Timeline];  
+DROP INDEX IF EXISTS [IX_Timeline_ID_TipoItem] ON [dbo].[Timeline];  
+DROP INDEX IF EXISTS [IX_Timeline_ID_Usuario] ON [dbo].[Timeline];  
+DROP INDEX IF EXISTS [IX_Usuario_Responsavel_ID_Responsavel] ON [dbo].[Usuario_Responsavel];  
+DROP INDEX IF EXISTS [IX_Usuario_Responsavel_ID_Tipo] ON [dbo].[Usuario_Responsavel];  
+DROP INDEX IF EXISTS [IX_Usuario_Responsavel_ID_Tipo2] ON [dbo].[Usuario_Responsavel];  
+DROP INDEX IF EXISTS [IX_Usuario_Responsavel_ID_Usuario] ON [dbo].[Usuario_Responsavel];  
+DROP INDEX IF EXISTS [IX_Usuario_Responsavel_IDM01] ON [dbo].[Usuario_Responsavel];  
+
+
+GO
+
+CREATE NONCLUSTERED INDEX [IX_Anexo_ID_Tarefa2] ON [dbo].[Anexo] ([ID_Tarefa] ASC, [Listable] ASC)  INCLUDE (Arquivo, AttachmentItemId, Bytes, ChatId, ID, ID_Cliente, ID_ClientePloomes, ID_CotacaoRevisao, ID_Documento, ID_Email, ID_EmailTemplate, ID_Item, ID_Lead, ID_Nota, ID_Oportunidade, ID_Produto, ID_ProdutoFamilia, ID_ProdutoGrupo, ID_Relatorio, ID_TipoItem, ID_Usuario, ID_Venda, IsSensitiveData, MessageId, Tipo, Url) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [Anexo_IDM] ON [dbo].[Anexo] ([ID_Relatorio] ASC)  INCLUDE (Arquivo, AttachmentItemId, Bytes, ChatId, ID_Cliente, ID_ClientePloomes, ID_CotacaoRevisao, ID_Criador, ID_Documento, ID_Email, ID_EmailTemplate, ID_Item, ID_Lead, ID_Nota, ID_Oportunidade, ID_Produto, ID_ProdutoFamilia, ID_ProdutoGrupo, ID_Tarefa, ID_TipoItem, ID_Usuario, ID_Venda, IsSensitiveData, Listable, MessageId, Tipo, Url) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Automation_Log_Id_DealId] ON [dbo].[Automation_Log] ([Id] DESC, [DealId] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_ID_CotacaoRevisaoTabela] ON [dbo].[Campo_Valor] ([ID_CotacaoRevisaoTabela] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_ID_CotacaoRevisaoTabelaProdutoParte] ON [dbo].[Campo_Valor] ([ID_CotacaoRevisaoTabelaProdutoParte] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_ID_Oportunidade] ON [dbo].[Campo_Valor] ([ID_Oportunidade] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Cliente_ID_Campo_DataHora] ON [dbo].[Campo_Valor_Cliente] ([ID_Campo] ASC, [ValorDataHora] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Cliente_ID_Campo_Decimal] ON [dbo].[Campo_Valor_Cliente] ([ID_Campo] ASC, [ValorDecimal] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Cliente_ID_Campo_Inteiro] ON [dbo].[Campo_Valor_Cliente] ([ID_Campo] ASC, [ValorInteiro] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Cliente_ID_Campo_Texto] ON [dbo].[Campo_Valor_Cliente] ([ID_Campo] ASC, [ValorTexto] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Cliente_ID_Cliente] ON [dbo].[Campo_Valor_Cliente] ([ID_Cliente] ASC, [ID_Campo] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Cotacao_ID_Campo_DataHora] ON [dbo].[Campo_Valor_Cotacao] ([ID_Campo] ASC, [ValorDataHora] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Cotacao_ID_Cotacao] ON [dbo].[Campo_Valor_Cotacao] ([ID_Cotacao] ASC, [ID_Campo] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Cotacao_ID_Cotacao2] ON [dbo].[Campo_Valor_Cotacao] ([ID_Cotacao] ASC, [ValorDecimal] ASC)  INCLUDE (ID_Campo) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Cotacao_ValorTexto] ON [dbo].[Campo_Valor_Cotacao] ([ValorTexto] ASC)  INCLUDE (ID_Campo, ID_Cotacao) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Cotacao_IDM01] ON [dbo].[Campo_Valor_Cotacao] ([ValorInteiro] ASC)  INCLUDE (ID_Campo, ID_Cotacao) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Oportunidade_ID_Campo_Booleano] ON [dbo].[Campo_Valor_Oportunidade] ([ID_Campo] ASC, [ValorBooleano] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Oportunidade_ID_Campo_DataHora] ON [dbo].[Campo_Valor_Oportunidade] ([ID_Campo] ASC, [ValorDataHora] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Oportunidade_ID_Campo_Inteiro] ON [dbo].[Campo_Valor_Oportunidade] ([ID_Campo] ASC, [ValorInteiro] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Oportunidade_ID_Campo_Texto] ON [dbo].[Campo_Valor_Oportunidade] ([ID_Campo] ASC, [ValorTexto] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Oportunidade_ID_Oportunidade] ON [dbo].[Campo_Valor_Oportunidade] ([ID_Oportunidade] ASC, [ID_Campo] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Oportunidade_ID_Oportunidade2] ON [dbo].[Campo_Valor_Oportunidade] ([ID_Oportunidade] ASC, [ValorTexto] ASC)  INCLUDE (ID_Campo) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Order_DateTimeValue] ON [dbo].[Campo_Valor_Order] ([FieldId] ASC, [DateTimeValue] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Order_FieldId] ON [dbo].[Campo_Valor_Order] ([FieldId] ASC, [BoolValue] ASC)  INCLUDE (OrderId) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Order_IntegerValue] ON [dbo].[Campo_Valor_Order] ([FieldId] ASC, [IntegerValue] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Order_OrderId] ON [dbo].[Campo_Valor_Order] ([OrderId] ASC, [FieldId] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Order_OrderId2] ON [dbo].[Campo_Valor_Order] ([OrderId] ASC)  INCLUDE (DateTimeValue, FieldId) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Order_StringValue2] ON [dbo].[Campo_Valor_Order] ([StringValue] ASC)  INCLUDE (FieldId, OrderId) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Order_Product_Order_ProductId] ON [dbo].[Campo_Valor_Order_Product] ([Order_ProductId] ASC, [FieldId] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Order_Product_Order_ProductId2] ON [dbo].[Campo_Valor_Order_Product] ([Order_ProductId] ASC)  INCLUDE (AttachmentItemValueId, AttachmentValueId, BigStringValue, BoolValue, ContactValueId, CurrencyValueId, DateTimeValue, DecimalValue, FieldId, Id, IntegerValue, ObjectValueId, ProductValueId, StringValue, UserValueId) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Order_Product_StringValue2] ON [dbo].[Campo_Valor_Order_Product] ([StringValue] ASC)  INCLUDE (FieldId, Order_ProductId) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Produto_ID_Campo_Inteiro] ON [dbo].[Campo_Valor_Produto] ([ID_Campo] ASC, [ValorInteiro] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Produto_ID_Produto2] ON [dbo].[Campo_Valor_Produto] ([ID_Produto] ASC)  INCLUDE (ContactValueId, ID, ID_Campo, ID_OpcaoValor, ID_UsuarioValor, ValorBooleano, ValorDecimal, ValorInteiro, ValorTexto) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Produto_ValorTexto] ON [dbo].[Campo_Valor_Produto] ([ValorTexto] ASC)  INCLUDE (ID_Campo, ID_Produto) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Produto_ID_Produto3] ON [dbo].[Campo_Valor_Produto] ([ID_Produto] ASC)  INCLUDE (AttachmentItemValueId, AttachmentValueId, ContactValueId, CurrencyValueId, ID, ID_Campo, ID_OpcaoValor, ID_ProdutoValor, ID_UsuarioValor, ValorBooleano, ValorDataHora, ValorDecimal, ValorInteiro, ValorTexto, ValorTextoMultilinha) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Campo_Valor_Quote_Product_Quote_ProductId] ON [dbo].[Campo_Valor_Quote_Product] ([Quote_ProductId] ASC, [FieldId] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Cliente_ID_ClientePloomes4] ON [dbo].[Cliente] ([ID_ClientePloomes] ASC, [Suspenso] ASC, [Nome] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Cliente_ID_ClientePloomes5] ON [dbo].[Cliente] ([ID_ClientePloomes] ASC, [ID_Responsavel] ASC, [Suspenso] ASC, [Nome] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Cliente_Suspenso] ON [dbo].[Cliente] ([Suspenso] ASC)  INCLUDE (Data_PrimeiraTarefa, DataCriacao, ID, ID_ClientePloomes, ID_Responsavel, ID_Segmento, ID_Tipo, Nome, OrdemTarefas) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Cliente_Suspenso2] ON [dbo].[Cliente] ([ID_ClientePloomes] ASC, [Suspenso] ASC)  INCLUDE (Data_PrimeiraTarefa, DataCriacao, ID, ID_Responsavel, ID_Segmento, ID_Tipo, Nome) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Log_Acao] ON [dbo].[Log_Acao] ([ID_Usuario] ASC, [DataHora] DESC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Log_Acao_AccountId] ON [dbo].[Log_Acao] ([AccountId] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_ID_Funil_ID_Status_2] ON [dbo].[Oportunidade] ([ID_Funil] ASC, [ID_Status2] ASC)  INCLUDE (Comissao, ContactProductId, Data_PrimeiraTarefa, DataAtualizacao, DataCriacao, DealNumber, FirstTaskNoTime, ID_Atualizador, ID_Cliente, ID_ClientePloomes, ID_Comissionado, ID_Contato, ID_Criador, ID_Estagio, ID_ImportacaoAtualizacao, ID_ImportacaoCriacao, ID_Lead, ID_Moeda, ID_MoedaInicial, ID_MotivoPerda, ID_OportunidadeOrigem, ID_Origem, ID_Reev, ID_Responsavel, ID_Status, ID_StatusFinalizado, ImportationIdCreate, ImportationIdUpdate, Inicio, OrdemTarefas, PublicFormIdCreate, PublicFormIdUpdate, Suspenso, Termino, Titulo, Valor, ValorInicial, WonQuoteId) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [Timeline_DBA02] ON [dbo].[Timeline] ([ID_ClientePloomes] ASC, [Principal] ASC)  INCLUDE (Cliente, DataHora, Documento, ID_Cliente, ID_Documento, ID_Oportunidade, ID_Responsavel, ID_ResponsavelSecundario, ID_TipoResponsavel, ID_TipoResponsavelSecundario, ID_Usuario, ID_Venda, Oportunidade, Usuario, Venda) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Timeline_ID_Cliente] ON [dbo].[Timeline] ([ID_Cliente] ASC, [DataHora] DESC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Timeline_ID_ClientePloomes] ON [dbo].[Timeline] ([ID_ClientePloomes] ASC, [ID_TipoResponsavel] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Timeline_ID_Oportunidade] ON [dbo].[Timeline] ([ID_Oportunidade] ASC, [DataHora] DESC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Timeline_ID_TipoItem] ON [dbo].[Timeline] ([ID_TipoItem] ASC, [ID_Item] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Timeline_ID_Usuario] ON [dbo].[Timeline] ([ID_Usuario] ASC, [DataHora] DESC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Usuario_Responsavel_ID_Responsavel] ON [dbo].[Usuario_Responsavel] ([ID_Responsavel] ASC, [ID_Usuario] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Usuario_Responsavel_ID_Tipo] ON [dbo].[Usuario_Responsavel] ([ID_Tipo] ASC, [ID_Usuario] ASC, [ID_Responsavel] ASC, [ID_Item] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Usuario_Responsavel_ID_Tipo2] ON [dbo].[Usuario_Responsavel] ([ID_Tipo] ASC, [ID_Item] ASC)  INCLUDE (ID, ID_Responsavel, ID_Usuario) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Usuario_Responsavel_ID_Usuario] ON [dbo].[Usuario_Responsavel] ([ID_Usuario] ASC, [ID_Responsavel] ASC)  INCLUDE (ID_Item) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  
+CREATE NONCLUSTERED INDEX [IX_Usuario_Responsavel_IDM01] ON [dbo].[Usuario_Responsavel] ([ID_Usuario] ASC, [ID_Item] ASC) WITH (FILLFACTOR = 100) ON [Ploomes_CRM_INDEX_04];  

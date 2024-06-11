@@ -55,7 +55,7 @@ group by indice, tabela, ultimoSeek, totalacesso
 Having COUNT(indice) > 15
 order by COUNT(indice) desc
 
-SELECT top 1 '1' FROM Ploomes_CRM..DBA_CONTIGENCIA_DROP
+--SELECT top 1 '1' FROM Ploomes_CRM..DBA_CONTIGENCIA_DROP
 
 go 
 USE BA_DBA
@@ -89,7 +89,7 @@ GO
 EXEC msdb.dbo.sp_update_job @job_name=N'DBA - Ativa auditoria de Logins',	@enabled=1
 go
 go
-Select * from BA_DBA.dbo.DBA_LOG_DELETEAUTOMATIONLOG Order by DataFim desc
-Select top 10 * from BA_DBA.dbo.DBA_LOG_DELETEAUTOMATIONLOG_HISTORICO where DatahoraFim_exec_proc is not null  Order by DatahoraFim_exec_proc desc
-Select count(1) From Ploomes_CRM.dbo.Automation_log (Nolock) WHERE DATETIME <= '2023-10-16' --- SEMPRE COLOCAR A DATA MIN
+Select top 3 * from BA_DBA.dbo.DBA_LOG_DELETEAUTOMATIONLOG Order by DataFim desc
+Select top 3 * from BA_DBA.dbo.DBA_LOG_DELETEAUTOMATIONLOG_HISTORICO where DatahoraFim_exec_proc is not null  Order by DatahoraFim_exec_proc desc
+--Select count(1) From Ploomes_CRM.dbo.Automation_log (Nolock) WHERE DATETIME <= '2023-10-16' --- SEMPRE COLOCAR A DATA MIN
 

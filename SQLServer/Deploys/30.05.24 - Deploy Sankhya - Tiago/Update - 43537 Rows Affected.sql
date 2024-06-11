@@ -1,0 +1,1 @@
+UPDATE [Queue].[dbo].[Integration_Queue] SET [Status] = 88 WHERE [Status] < 4 AND ([CreateDate] < DATEADD(day, -14, GETDATE()) OR [EntityUpdateDate]< DATEADD(day, -14, GETDATE()));
