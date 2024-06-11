@@ -1,6 +1,5 @@
-## https://stackoverflow.com/questions/6376436/mongodb-drop-every-database
 # para quando fazemos testes de restore em uma instância e precisamos dropar tudo para fazer outro restore. 
-# Melhor rodar no Compass para não ter que alterar o Script
+# Rodar no Compass para não ter que alterar o Script
 
 
 db.adminCommand("listDatabases").databases.forEach( function (d) {
@@ -8,4 +7,4 @@ db.adminCommand("listDatabases").databases.forEach( function (d) {
         db.getSiblingDB(d.name).dropDatabase();
  })
 
-Funciona e muito bem! 21/04/23
+# pae é baum!
