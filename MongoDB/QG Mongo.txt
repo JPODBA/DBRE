@@ -1,0 +1,135 @@
+############ No server Linux ################################
+###  https://www.mongodb.com/docs/manual/reference/command/nav-diagnostic/
+
+# Memória disponível 
+free -m
+
+# Para ver utilização de recursos no Linux. 
+top 
+
+# Para checar o disco espace 
+df -h
+
+# Mongo Process (Não entendi o result set)
+ps -ef | grep -i mongo
+
+## Muito útil. (alterar nome do servidor e porta abaixo)
+mongotop 15 --host=VM-MONGO-PRD-02.internal.cloudapp.net --port=39017 -u=dba --authenticationDatabase=admin 
+
+## Útil. (alterar porta abaixo)
+# https://www.mongodb.com/docs/v4.2/reference/program/mongostat/
+
+mongostat --port 37026 -u dba --authenticationDatabase admin
+
+############ No server Linux ################################
+
+# Mostra informações básicas do Banco, como quantidade e tamanho de collections (tabelas) 
+db.stats()
+
+# 
+db.runCommand( { buildInfo: 1 } )
+
+
+Bom para saber a porta, versão e o ID do ADM. 
+
+-- Gestão de memória --- 
+db.serverStatus().tcmalloc.tcmalloc.formattedString
+
+db.serverStatus().host
+db.serverStatus().version
+db.serverStatus().localTime
+db.serverStatus().pid
+
+# Irá nós trazer se existe alguma alerta importante. 
+db.serverStatus().asserts.warning
+
+
+# Memória. Essas informações conseguimos ver pelo Compass
+
+db.serverStatus().mem.bits
+db.serverStatus().mem.resident  # A memória usada pelos databases
+db.serverStatus().mem.virtual   # Quantidade usada pela instância
+
+# (São erros que o usuário pode gerar, como falta de espaço em disco ou chave duplicada)
+db.serverStatus().asserts.user
+
+db.serverStatus().globalLock.currentQueue.total  - Lock gerais COUNT. 
+db.serverStatus().globalLock.activeClients.total - Locks gerais Clientes
+
+# Avaliar esse numero para mensurar a utilização do banco de dados. Frio e seco. 
+db.serverStatus().opcounters.query
+db.serverStatus().opcounters.insert
+db.serverStatus().opcounters.update 
+db.serverStatus().opcounters.delete
+
+
+## tem que analisar os numeros. O Compass e mongotop dá essa info. latency: Valor em microseconds.ops = numero de operações na instancia. (Não tão útil)
+db.serverStatus().opLatencies.reads
+db.serverStatus().opLatencies.writes
+
+## metrics
+
+(If this number is high, you may want to profile your queries and try to determine where you’re doing a sort operation and an index is not being used.)
+db.serverStatus().metrics.operation.scanAndOrder #(The total number of queries that return sorted numbers that cannot perform the sort operation using an index.)
+
+db.serverStatus().metrics.operation.writeConflicts # (O número total de consultas que encontraram conflitos de gravação.)
+db.serverStatus().metrics.repl.buffer.count # (Para replicadas. FIca para o futuro)
+
+---------------------------------
+https://hevodata.com/learn/mongodb-query-performance-analysis/#kf1
+
+Para analisar uma collection em particular
+db.collection.explain(“executionStats”) 
+
+Apenas pegar a QUERY, e jogar no final dela, .explain("executionStats") para analisar a mesma. 
+
+----------------------------------
+
+https://severalnines.com/blog/dealing-with-slow-queries-in-mongodb/#:~:text=One%20can%20identify%20slow%20queries,identify%20which%20queries%20are%20lagging.
+
+There are two ways you can identify slow queries in MongoDB. Ambos dentro do DB
+
+Using the Profiler
+Using db.currentOp() helper
+
+db.currentOp({'secs_running': {$gte: 5}})
+
+# Validar as configurações de cache do WiredTiger
+
+*** Pegar o result set, colar em um notepad e avaliar as três opções abaixo: 
+# maximum bytes configured
+# bytes currently in the cache
+# tracked dirty bytes in the cache
+
+# Em suma, nunca o Dirty pode ser igual ou maior que o currently
+
+db.serverStatus().wiredTiger.cache
+
+
+# Conections - Em suma, não existe limite para conexões no MongoDB. Mas pode ter casos que grandes quantidades de conexões entra a API e o Database pode gerar overhead no server. O que vai limitar a habilidade de gerenciar conexôes. 
+# Current nunca pode ser igual do que Available. 
+db.serverStatus().connections
+
+
+## Realease em memória
+db.adminCommand( { setParameter: 1, tcmallocAggressiveMemoryDecommit: 1 } )
+
+db.adminCommand( { setParameter: 1, tcmallocAggressiveMemoryDecommit: 0 } )
+
+
+######################## Para Replicas Set ##########################################################
+
+# O numéro tem que ser o menor possível. 
+db.printSlaveReplicationInfo() ou  rs.printSlaveReplicationInfo() 
+
+
+mongostat --help
+
+Primeiro lugar onde olhar quando tiver problema. 
+cat /data/rs/p/mongod.log 
+
+
+
+
+
+
