@@ -1,3 +1,5 @@
+Use Ploomes_CRM
+go
 select * from sys.master_files
 go
 
@@ -16,7 +18,7 @@ JOIN sys.dm_db_partition_stats s ON s.[object_id] = i.[object_id] AND s.[index_i
 WHERE df.type = 0  -- Data files only, not log files
 	and i.[name] NOT LIKE 'PK%'
 	AND i.[name] NOT LIKE 'UK%'
-	and df.database_id = 8
+	and df.database_id = 5
 GROUP BY i.[name], df.name, df.physical_name
 ORDER BY 
     IndexSizeKB DESC;
@@ -83,7 +85,8 @@ FROM    sys.indexes I INNER JOIN
         ) tmp2
         ON tmp2.object_id = I.object_id AND tmp2.index_id = I.index_id
 WHERE I.is_primary_key = 0 AND I.is_unique_constraint = 0
-	--and dba.totalAcesso < 101773
+	--and dba.totalAcesso < 11937964
+	and dba.totalAcesso >= 11937964
 Order by T.name
 
 --Delete from #DBA_TOTAL_ACESSO where totalAcesso < 101773
