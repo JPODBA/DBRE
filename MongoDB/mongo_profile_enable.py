@@ -18,11 +18,11 @@ def alternar_profiling(client, nivel, slowms):
         print(f"Profiling definido para {db_name}: nível {nivel}, slowms {slowms}")
 
 def main():
-    uri = "mongodb://dba:Mtbr1241@172.16.0.40:37018"  
+    uri = "mongodb://dba:Mtbr1241@172.16.0.62:37022"  
     client = conectar_mongodb(uri)  
     
     nivel_profiling = 0
-    slowms = 10
+    slowms = 100
     alternar_profiling(client, nivel_profiling, slowms)
  
 if __name__ == "__main__":

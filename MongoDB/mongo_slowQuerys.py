@@ -1,20 +1,46 @@
 from pymongo import MongoClient
-from pymongo.errors import ConnectionFailure
+from pprint import pprint
+import json
+from bson import Binary, ObjectId
+from datetime import datetime
 
-def conectar_mongodb(uri):
-    try:
-        client = MongoClient(uri)
-        # Verifica a conexão
-        client.admin.command('ping')
-        print("Conexão com MongoDB bem-sucedida")
-        return client
-    except ConnectionFailure:
-        print("Falha na conexão com MongoDB")
-        return None
+client = MongoClient("mongodb://dba:Mtbr1241@172.16.0.62:37022")
 
-def obter_logs_lentos(client, database_name):
-    db = client[database_name]
-    logs_lentos = db.system.profile.find({"millis": {"$gt": 100}})  
+def listDatabases():
+    names = client.list_database_names()
+    return names
+
+db_list = listDatabases()
+
+rmv_db = ['BA_DBA', 'admin', 'config', 'local']
+for db in rmv_db:
+    if db in db_list:
+        db_list.remove(db)
+
+def json_serial(obj):
+    """JSON serializer for objects not serializable by default json code"""
+    if isinstance(obj, (datetime,)):
+        return obj.isoformat()
+    elif isinstance(obj, (ObjectId,)):
+        return str(obj)
+    elif isinstance(obj, (Binary,)):
+        return obj.hex()
+    raise TypeError(f"Type {type(obj)} not serializable")
+
+# Abre um arquivo para escrever os logs
+with open('logs_lentos.txt', 'w') as file:
+    for db in db_list:
+        db_log = client[db]
+        logs_lentos = db_log.system.profile.find({"millis": {"$gt": 10}})
+      
+        descompacta_query = list(logs_lentos)
+        for log in descompacta_query:
+            file.write(f"{json.dumps(log, default=json_serial)}\n")  # Escreve o log como JSON
+
+def ler_logs_arquivo(file_path):
+    with open(file_path, 'r') as file:
+        logs = [json.loads(line) for line in file]  # Converte cada linha de volta para um dicionário
+    return logs
 
 def analisar_consultas_lentas(logs_lentos):
     consultas_problema = []
@@ -23,20 +49,11 @@ def analisar_consultas_lentas(logs_lentos):
             consultas_problema.append(log)
     return consultas_problema
 
-def main():
-    uri = "mongodb://dba:Mtbr1241@172.16.0.40:37018"  
-    client = conectar_mongodb(uri)
-    if client:        
-        tenants = client.list_database_names()
-        for tenant_db in tenants:
-            # print(tenant_db, ' ', obter_logs_lentos(client, tenant_db))
-            logs_lentos = obter_logs_lentos(client, tenant_db)
-            consultas_problema = analisar_consultas_lentas(logs_lentos)            
-            if consultas_problema:
-                print(f"Consultas lentas identificadas no banco de dados do tenant {tenant_db}:")
-                for consulta in consultas_problema:
-                    print(consulta)
-
-if __name__ == "__main__":
-    main()
-
+file_path = 'logs_lentos.txt'
+logs_lidos = ler_logs_arquivo(file_path)
+# consultas_problema = analisar_consultas_lentas(logs_lidos)    
+# print(consultas_problema)
+for log in logs_lidos:
+    print('####################################################################')
+    pprint(log)
+    print('####################################################################')
