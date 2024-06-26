@@ -4,7 +4,7 @@ import json
 from bson import Binary, ObjectId
 from datetime import datetime
 
-client = MongoClient("mongodb://dba:Mtbr1241@172.16.0.62:37022")
+client = MongoClient("mongodb://dba:Mtbr1241@172.16.0.53:37025")
 
 def listDatabases():
     names = client.list_database_names()
