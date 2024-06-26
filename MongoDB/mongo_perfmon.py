@@ -1,4 +1,4 @@
-import psutil
+import psutil # process and system utilities
 import time
 from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
