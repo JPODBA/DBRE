@@ -5,10 +5,10 @@ import json
 from bson import Binary, ObjectId
 from datetime import datetime
 
-client = MongoClient("mongodb://dba:Mtbr1241@172.16.0.53:37025")
+client = MongoClient("mongodb://user:senha@172.19.0.10:39017")
 
 def listDatabases():
-    names = client.list_database_names()
+    names = client.list_database_names('ploomescrm_2667')
     return names
 
 db_list = listDatabases()
@@ -19,7 +19,6 @@ for db in rmv_db:
         db_list.remove(db)
 
 def json_serial(obj):
-    """JSON serializer for objects not serializable by default json code"""
     if isinstance(obj, (datetime,)):
         return obj.isoformat()
     elif isinstance(obj, (ObjectId,)):
@@ -28,19 +27,18 @@ def json_serial(obj):
         return obj.hex()
     raise TypeError(f"Type {type(obj)} not serializable")
 
-# Abre um arquivo para escrever os logs
 with open('logs_lentos.txt', 'w') as file:
     for db in db_list:
         db_log = client[db]
-        logs_lentos = db_log.system.profile.find({"millis": {"$gt": 10}})
+        logs_lentos = db_log.system.profile.find({"millis": {"$gt": 1000}})
       
         descompacta_query = list(logs_lentos)
         for log in descompacta_query:
-            file.write(f"{json.dumps(log, default=json_serial)}\n")  # Escreve o log como JSON
+            file.write(f"{json.dumps(log, default=json_serial)}\n")  
 
 def ler_logs_arquivo(file_path):
     with open(file_path, 'r') as file:
-        logs = [json.loads(line) for line in file]  # Converte cada linha de volta para um dicionário
+        logs = [json.loads(line) for line in file]  # Converte cada linha de volta para um dicionário saporra
     return logs
 
 def analisar_consultas_lentas(logs_lentos):
@@ -53,7 +51,7 @@ def analisar_consultas_lentas(logs_lentos):
 file_path = 'logs_lentos.txt'
 logs_lidos = ler_logs_arquivo(file_path)
 # consultas_problema = analisar_consultas_lentas(logs_lidos)    
-# print(consultas_problema)
+# print(consultas_problema) #DEBUG
 for log in logs_lidos:
     print('####################################################################')
     pprint(log)
