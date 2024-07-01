@@ -1,3 +1,4 @@
+# pip install pymongo
 from pymongo import MongoClient
 from pprint import pprint
 import json
