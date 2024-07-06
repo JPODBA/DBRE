@@ -19,7 +19,7 @@ select
 from master.dbo.sysservers
 where srvid > 0
 order by srvname
-
+--exec sp_dropserver 'E', 'droplogins' 
 drop login linkedserver
 
 -- Para criar o comando de forma geral. 
@@ -41,7 +41,9 @@ order by srvname
 --exec sp_dropserver 'SHARD09', 'droplogins'
 --exec sp_dropserver 'SHARD11', 'droplogins' 
 
--- Exemplo de criação 
-EXEC master.dbo.sp_addlinkedserver   @server = N'SHARD02', @srvproduct=N'', @provider=N'SQLOLEDB', @datasrc=N'172.16.0.23';
-EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SHARD02', @useself=N'False', @locallogin=NULL, @rmtuser=N'linkedserver', @rmtpassword='lemonjuice';
+-- Exemplo de criação SQL-CRM-HMLG.172.22.2.6
+EXEC master.dbo.sp_addlinkedserver   @server = N'SQL-CRM-HMLG', @srvproduct=N'', @provider=N'SQLOLEDB', @datasrc=N'172.22.2.6';
+EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SQL-CRM-HMLG', @useself=N'False', @locallogin=NULL, @rmtuser=N'linkedserver', @rmtpassword='lemonjuice';
 GO
+
+select top 1 * from [SQL-CRM-HMLG].master.sys.databases

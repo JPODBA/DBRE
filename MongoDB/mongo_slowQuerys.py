@@ -8,7 +8,7 @@ from datetime import datetime
 client = MongoClient("mongodb://user:senha@172.19.0.10:39017")
 
 def listDatabases():
-    names = client.list_database_names('ploomescrm_2667')
+    names = client.list_database_names()
     return names
 
 db_list = listDatabases()
