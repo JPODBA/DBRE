@@ -23,7 +23,7 @@ def reindex_all_collections(uri):
         client.close()
 
 if __name__ == "__main__":
-    uri = "mongodb://dba:Mtbr1241@172.16.0.40:37018"
+    uri = "mongodb://dba:Mtbr1241@172.19.0.10:39017"
     reindex_all_collections(uri)
 
 
