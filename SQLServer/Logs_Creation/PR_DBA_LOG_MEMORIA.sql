@@ -67,15 +67,14 @@ GO
 /*
  SELECT count(1), Query_text
  FROM BA_DBA.DBO.DBA_LOG_MEMORIA (nolock) 
- Where request_time >= '2023-08-22 10:20:00'
-	and requested_memory_kb >= 1000
+ Where  requested_memory_kb >= 1000
 	and max_used_memory_kb >= 1000
  group by Query_text
  Order by 1 desc
 
- select 53632 / 1024 / 1024
+ select 23158448 / 1024 / 1024
  SELECT  * 
- FROM BA_DBA.DBO.DBA_LOG_MEMORIA (nolock) order by 2 desc
+ FROM BA_DBA.DBO.DBA_LOG_MEMORIA (nolock) order by 4 desc
  
  Delete from BA_DBA.DBO.DBA_LOG_MEMORIA
 --EXEC BA_DBA.DBO.PR_BA_DBA.DBO.DBA_LOG_MEMORIA

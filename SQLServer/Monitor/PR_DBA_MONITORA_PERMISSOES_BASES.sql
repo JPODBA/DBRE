@@ -34,6 +34,7 @@ BEGIN
 	WHERE NAME NOT LIKE 'NT%'
 		AND NAME NOT IN ('SA')
 		AND NAME NOT LIKE 'SQL-PRD-%'
+		AND NAME NOT LIKE 'SQL-POC-%'
 		AND NAME NOT LIKE 'DB-ANALY-PRD%'
 
 	INSERT INTO BA_DBA.DBO.DBA_MONITOR_LOGINS 
@@ -79,6 +80,11 @@ BEGIN
 			,''PLOOMES_DBSYNC''
 			,''PLOOMES_SERVICES''
 			,''PLOOMES_SHOOTER''
+			,''ploomes_reports''
+			,''ploomes_internal''
+,''ploomes_api2_publicinterface''
+	,''ploomes_analytics''
+	,''ploomes_idp''
 			,''PLOOMES_API'')
 		ORDER BY 
 				U.NAME, R.NAME;'
