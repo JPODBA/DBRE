@@ -71,10 +71,12 @@ GO
 	and max_used_memory_kb >= 1000
  group by Query_text
  Order by 1 desc
-
- select 23158448 / 1024 / 1024
- SELECT  * 
- FROM BA_DBA.DBO.DBA_LOG_MEMORIA (nolock) order by 4 desc
+				1382904
+ select 22233128 / 1024 / 1024
+ SELECT  top 100 * 
+ FROM BA_DBA.DBO.DBA_LOG_MEMORIA (nolock) 
+ where request_time >= '20240726'
+ order by 4 desc
  
  Delete from BA_DBA.DBO.DBA_LOG_MEMORIA
 --EXEC BA_DBA.DBO.PR_BA_DBA.DBO.DBA_LOG_MEMORIA
