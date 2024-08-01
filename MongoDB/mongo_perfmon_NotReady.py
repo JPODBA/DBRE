@@ -1,3 +1,4 @@
+# pip install pymongo
 import psutil # process and system utilities
 import time
 from pymongo import MongoClient
