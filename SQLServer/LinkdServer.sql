@@ -1,9 +1,9 @@
 -- OBS --------------------------------------------------------
 -- OBS --------------------------------------------------------
-
--- 1) QUANDO O @datasrc ESTIVER SETADO, PARA OS CASOS DE INSTÂNCIA DO SQL SERVER, O @srvproduct NÃO PODE SER ESPECIFICADO.
--- 2) PARA OS SERVIDORES HOSPEDADOS NA MESMA MÁQUINA(INSTÂNCIA), NÃO HÁ NECESSIDADE DE ALTERAR O HOST.
--- 3) CHECAR O CONNECTION TIMEOUT E O QUERY TIMEOUT DOS LINKEDSERVERS. PADRÃO 60 SEGUNDOS.
+-- Teste
+-- 1) QUANDO O @datasrc ESTIVER SETADO, PARA OS CASOS DE INSTï¿½NCIA DO SQL SERVER, O @srvproduct Nï¿½O PODE SER ESPECIFICADO.
+-- 2) PARA OS SERVIDORES HOSPEDADOS NA MESMA Mï¿½QUINA(INSTï¿½NCIA), Nï¿½O Hï¿½ NECESSIDADE DE ALTERAR O HOST.
+-- 3) CHECAR O CONNECTION TIMEOUT E O QUERY TIMEOUT DOS LINKEDSERVERS. PADRï¿½O 60 SEGUNDOS.
 -- 4) COLOCAR O LOGIN do LINKEDSERVER COMO SysADMIN.
 
 -- OBS --------------------------------------------------------
@@ -12,7 +12,7 @@
 CREATE LOGIN linkedserver WITH PASSWORD = 'lemonjuice', CHECK_POLICY = OFF, DEFAULT_DATABASE = master
 EXEC master..sp_addsrvrolemember @loginame = N'linkedserver', @rolename = N'sysadmin'
 
--- Para Dropar depois de criar. O ideal é sempre criar por necessidade. 
+-- Para Dropar depois de criar. O ideal ï¿½ sempre criar por necessidade. 
 select 
 --*
 'exec sp_dropserver '''+ srvname +''', ''droplogins'' '
@@ -41,7 +41,7 @@ order by srvname
 --exec sp_dropserver 'SHARD09', 'droplogins'
 --exec sp_dropserver 'SHARD11', 'droplogins' 
 
--- Exemplo de criação SQL-CRM-HMLG.172.22.2.6
+-- Exemplo de criaï¿½ï¿½o SQL-CRM-HMLG.172.22.2.6
 EXEC master.dbo.sp_addlinkedserver   @server = N'SQL-CRM-HMLG', @srvproduct=N'', @provider=N'SQLOLEDB', @datasrc=N'172.22.2.6';
 EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SQL-CRM-HMLG', @useself=N'False', @locallogin=NULL, @rmtuser=N'linkedserver', @rmtpassword='lemonjuice';
 GO
