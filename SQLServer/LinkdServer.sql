@@ -24,7 +24,7 @@ drop login linkedserver
 
 -- Para criar o comando de forma geral. 
 select 
-*
+'Select top 1 * From [' + srvname + '].master.sys.databases'
 --'exec sp_dropserver '''+ srvname +''', ''droplogins'' '
 from master.dbo.sysservers
 where srvid > 0
@@ -39,11 +39,34 @@ order by srvname
 --exec sp_dropserver 'SHARD07', 'droplogins' 
 --exec sp_dropserver 'SHARD08', 'droplogins' 
 --exec sp_dropserver 'SHARD09', 'droplogins'
+--exec sp_dropserver 'SHARD10', 'droplogins'
 --exec sp_dropserver 'SHARD11', 'droplogins' 
+--exec sp_dropserver 'SHARD12', 'droplogins' 
 
 -- Exemplo de cria��o SQL-CRM-HMLG.172.22.2.6
-EXEC master.dbo.sp_addlinkedserver   @server = N'SQL-CRM-HMLG', @srvproduct=N'', @provider=N'SQLOLEDB', @datasrc=N'172.22.2.6';
-EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SQL-CRM-HMLG', @useself=N'False', @locallogin=NULL, @rmtuser=N'linkedserver', @rmtpassword='lemonjuice';
+EXEC master.dbo.sp_addlinkedserver   @server = N'SHARD10', @srvproduct=N'', @provider=N'SQLOLEDB', @datasrc=N'172.16.0.95';
+EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SHARD10', @useself=N'False', @locallogin=NULL, @rmtuser=N'dba', @rmtpassword='wMPVd6rXMOkxLACt3RwL';
 GO
-
-select top 1 * from [SQL-CRM-HMLG].master.sys.databases
+EXEC master.dbo.sp_addlinkedserver   @server = N'SHARD04', @srvproduct=N'', @provider=N'SQLOLEDB', @datasrc=N'172.26.1.184';
+EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SHARD04', @useself=N'False', @locallogin=NULL, @rmtuser=N'dba', @rmtpassword='Mtbr1241';
+GO
+EXEC master.dbo.sp_addlinkedserver   @server = N'SHARD05', @srvproduct=N'', @provider=N'SQLOLEDB', @datasrc=N'172.26.1.90';
+EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SHARD05', @useself=N'False', @locallogin=NULL, @rmtuser=N'dba', @rmtpassword='Mtbr1241';
+GO
+EXEC master.dbo.sp_addlinkedserver   @server = N'SHARD09', @srvproduct=N'', @provider=N'SQLOLEDB', @datasrc=N'172.26.0.245';
+EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SHARD09', @useself=N'False', @locallogin=NULL, @rmtuser=N'dba', @rmtpassword='Mtbr1241';
+GO
+EXEC master.dbo.sp_addlinkedserver   @server = N'SHARD12', @srvproduct=N'', @provider=N'SQLOLEDB', @datasrc=N'172.26.1.212';
+EXEC master.dbo.sp_addlinkedsrvlogin @rmtsrvname=N'SHARD12', @useself=N'False', @locallogin=NULL, @rmtuser=N'dba', @rmtpassword='Mtbr1241';
+go
+Select top 1 * From [SHARD01].master.sys.databases
+Select top 1 * From [SHARD02].master.sys.databases
+Select top 1 * From [SHARD04].master.sys.databases
+Select top 1 * From [SHARD05].master.sys.databases
+Select top 1 * From [SHARD06].master.sys.databases
+Select top 1 * From [SHARD07].master.sys.databases
+Select top 1 * From [SHARD08].master.sys.databases
+Select top 1 * From [SHARD09].master.sys.databases
+Select top 1 * From [SHARD10].master.sys.databases
+Select top 1 * From [SHARD11].master.sys.databases
+Select top 1 * From [SHARD12].master.sys.databases

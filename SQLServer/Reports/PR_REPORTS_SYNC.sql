@@ -17,11 +17,13 @@ BEGIN
 	
 	IF (@Shard is null)
 	Begin 
+
 		insert #Shards
 		Select distinct Shard 
-		From resync_reports_idp 
-		Where shard not in ('SHARD03')
+		From Ploomes_IdentityProvider..resync_reports_idp 
+		Where shard not in ('SHARD08', 'SHARD12')
 		order by 1
+				
 	End
 	ELSE
 	BEGIN
@@ -41,6 +43,8 @@ BEGIN
 	Begin
 		
 		Select @Shard = Shard from #Shards order by 1 desc
+		--Select * From Ploomes_IdentityProvider..resync_reports_idp order by 1 
+
 		
 		--- lOG Sincronização ---------------------------------------------------------------
 		DECLARE @dataExec datetime = getdate()
@@ -61,7 +65,7 @@ BEGIN
 
 		exec Ploomes_IdentityProvider.dbo.PR_REPORTS_SYNC_CONTACT @Shard = @Shard, @Debug = 1
 	
-	  exec Ploomes_IdentityProvider.dbo.PR_REPORTS_SYNC_DEAL @Shard = @Shard, @Debug = 1		
+	    exec Ploomes_IdentityProvider.dbo.PR_REPORTS_SYNC_DEAL @Shard = @Shard, @Debug = 1		
 		
 		exec Ploomes_IdentityProvider.dbo.PR_REPORTS_SYNC_PROFILE @Shard = @Shard, @Debug = 1
 
