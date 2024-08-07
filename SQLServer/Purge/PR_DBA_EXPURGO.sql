@@ -62,11 +62,37 @@ BEGIN
 		--Select count(ID_ClientePloomes), ID_ClientePloomes from Ploomes_CRM.dbo.Timeline group by ID_ClientePloomes ## VAlIDAÇÂO DE DEBUG
 	
 		-- ## INICIO EXPURGOS
-		Exec BA_DBA.dbo.PR_DBA_EXPURGO_TIMELINE @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
-			 		
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_TIMELINE							 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_RELATEDPERSON_EXTERNALOPENING	 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_RELATEDPERSON					 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_NOTIFICACAO						 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_INTEGRACAO_TOTALVOICE_USUARIO	 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_INTEGRACAO_TOTALVOICE			 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_WEBHOOK							 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_VENDA_TABELA_PRODUTO_PARTE		 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_VENDA_TABELA_PRODUTO				 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_VENDA_STATUS						 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_DOCUMENT_PAGE					 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_COTACAO_REVISAO_ACEITA_HISTORICO  @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_VENDA_TABELA						 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_VENDA_QUERY						 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_VENDA_STATUS_HISTORICO			 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_VENDA_PARCELA					 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_VENDA_APPROVAL					 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_VENDA							 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_USUARIO_RESET_PASSWORD_CONTROL	 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_USUARIO_PERFIL					 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_USUARIO_PROMOTERSCORE_REASON		 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_USUARIO_FILTRO_TAREFA_CLASSE		 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_USUARIO_SUSPENSO_HISTORICO		 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_USUARIO_RESPONSAVEL				 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_USUARIO_PROMOTERSCORE			 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_USUARIO_PIPELINESETTINGS			 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout
+		Exec BA_DBA.dbo.PR_DBA_EXPURGO_USUARIO_PERFIL_ALLOWEDCHATUSER	 @Debug = 0, @AccountId = @AccountId, @Top = @top, @timeout = @timeout			 		
 									   					
 		Select @TimeNow = GETDATE()
 		Delete FROM BA_DBA.dbo.DBA_LOG_EXPURGO_ACCOUNT where ACCOUNT_ID = @AccountId 
+
 	END
 
 	--- lOG Delete Historico -----------------------------------------------------

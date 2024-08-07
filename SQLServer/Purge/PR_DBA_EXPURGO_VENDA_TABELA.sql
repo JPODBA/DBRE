@@ -14,6 +14,13 @@ CREATE or ALTER  PROC PR_DBA_EXPURGO_VENDA_TABELA
 AS
 BEGIN
 	SET NOCOUNT ON
+
+	IF EXISTS (SELECT 1 FROM BA_DBA.DBO.DBA_LOG_EXPURGO WHERE AcountID = @AccountId AND SPROC = 'PR_DBA_EXPURGO_VENDA_TABELA' AND CountFim = 0)
+	BEGIN
+		PRINT 'PR_DBA_EXPURGO_VENDA_TABELA já zerou esse accountID. Segue o próximo!!'
+		RETURN
+	END
+
 	DECLARE 
 		@Data_Inicio		Datetime = null, 
 		@Data_Fim			Datetime = null, 

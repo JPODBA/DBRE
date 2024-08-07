@@ -1,4 +1,5 @@
--- define the max value for each data type
+USE Ploomes_IdentityProvider
+GO
 CREATE TABLE #DataTypeMaxValue (DataType varchar(50), MaxValue bigint)
 
 INSERT INTO #DataTypeMaxValue VALUES 
@@ -30,6 +31,10 @@ WHERE DBPS.row_count > 0
 ORDER BY Porcentagem_De_Uso desc
 
 DROP TABLE #DataTypeMaxValue
+
+Delete From #Coluna_MaxIDs where tabela = 'DealCollaboratorUser' and QTD_Linhas = 14422418
+Delete From #Coluna_MaxIDs where tabela = 'AdministrationUser' and QTD_Linhas = 21017
+
 
 Select distinct 
 Tabela,
