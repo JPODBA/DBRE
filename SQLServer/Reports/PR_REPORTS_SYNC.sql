@@ -21,7 +21,7 @@ BEGIN
 		insert #Shards
 		Select distinct Shard 
 		From Ploomes_IdentityProvider..resync_reports_idp 
-		Where shard not in ('SHARD08', 'SHARD12')
+		Where shard not in ('SHARD03')
 		order by 1
 				
 	End
